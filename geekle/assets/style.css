@@ -2,41 +2,104 @@
     padding: 0;
     margin: 0;
   }
+
+body {
+  background-image: url("background1.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
   
-  canvas {
-    background: #eee;
-    display: block;
-    margin: 0 auto;
-    margin-top: 25px;
-  }
-  
-  .title {
-    color: red;
-    font-size: 100px;
-    font-family: cursive;
-    text-align: center;
-  }
-  
-  .subTitle {
-    color: red;
-    font-size: 20px;
-    font-family: cursive;
-    text-align: center;
-  }
-  
-  .search {
-    margin: 0 auto;
-    display: block;
-    margin-top: 5px;
-    size: large;
-    width: 400px;
-    height: 40px;
-    text-align: center;
-  }
-  
-  .guesses {
-    color: blue;
-    font-size: 15px;
-    margin-top: 25px;
-    text-align: center;
-  }
+canvas {
+  background: grey;
+  display: block;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.background {
+  background-color: aqua;
+  background-size:50px;
+  width:40%;
+  margin-left:30%;
+  margin-right:30%;
+  height: 100%;
+  border: 2px solid black;
+}
+
+.title {
+  color: red;
+  font-size: 100px;
+  font-family: cursive;
+  text-align: center;
+  background-color: aqua;
+  width:40%;
+  margin-left:30%;
+  margin-right:30%;
+}
+
+.subTitle {
+  color: red;
+  font-size: 20px;
+  font-family: cursive;
+  text-align: center;
+  background-color: aqua;
+  background-size:50px;
+  width:40%;
+  margin-left:30%;
+  margin-right:30%;
+}
+
+.guesses {
+  color: blue;
+  font-size: 15px;
+  margin-top: 25px;
+  text-align: center;
+  background-color: aqua;
+  width:40%;
+  margin-left:30%;
+  margin-right:30%;
+}
+
+.guess-bar {
+  display:inline-flex;
+}
+
+form button  {
+  size: large;
+  width: 40px;
+  height: 40px;
+  background: #000051;
+  border: none;
+  padding: 10px;
+  color: white;
+}
+
+form input ::placeholder{
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 5px;
+  size: large;
+  width: 400px;
+  height: 40px;
+}
+
+form label {
+  display: none;
+}
+
+.play-button {
+  background-color: red;
+  color: black;
+  width:50%;
+  height:100px;
+  margin-left:25%;
+  margin-right:25%;
+  margin-top: 50px;
+  font-size: 50px;
+  font-weight: 700;
+  border: 2px solid black;
+}
+

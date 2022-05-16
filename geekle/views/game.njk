@@ -1,0 +1,27 @@
+{% extends "parent.njk" %}
+
+{% block room %}
+<div class="background">
+  <h1 class="title">Geekle</title>
+    <h3 class="subTitle">GALAXYCON GUESSING GAME</h3>
+    <div class="guesses">0 of 8 guesses</div>
+    <form action="/" id="guess" class="guess-bar>
+      <input 
+        auto-focus="on" 
+        autocomplete="off"
+        id="combo-box-demo"
+        name="character"
+        placeholder="Guess a character!"
+      />
+      <button>
+        Go!
+      </button>
+    </form>
+    <canvas id="myCanvas" width="480" height="600"></canvas>
+</div>
+{% endblock %}
+
+{% block script %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script>
+  <script src="script.js"></script>
+{% endblock %}
