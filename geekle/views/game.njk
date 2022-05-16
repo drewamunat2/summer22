@@ -5,19 +5,32 @@
   <h1 class="title">Geekle</title>
     <h3 class="subTitle">GALAXYCON CHARACTER GUESSING GAME</h3>
     <div class="guesses">0 of 8 guesses</div>
-    <form id="guess" class="guess-bar>
+    <form id="guess" class="guess-bar" role="search">
+      <label for="charName">First name:</label>
       <input 
-        auto-focus="on" 
+        type="search" 
+        id="charName" 
+        name="charName"
         autocomplete="off"
-        id="combo-box-demo"
-        name="character"
-        placeholder="Guess a character!"
+        list="character-list"
       />
-      <button>
-        Go!
-      </button>
+      <datalist id="character-list">
+        <option value="Batman">
+        <option value="Superman">
+        <option value="Darth Vader">
+        <option value="Bubbles">
+        <option value="Goku">
+        <option value="Harry Potter">
+        <option value="Captain Kirk">
+        <option value="Zelda">
+        <option value="Skeletor">
+        <option value="Mario">
+        <option value="Rick O’Connell">
+        <option value="Gill-Man">
+        <option value="Frank N. Furter">
+      </datalist>
     </form>
-    <canvas id="myCanvas" width="480" height="600"></canvas>
+    <canvas id="myCanvas" width="480" height="600"/>
 </div>
 {% endblock %}
 

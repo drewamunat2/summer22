@@ -62,10 +62,6 @@ canvas {
   margin-right:30%;
 }
 
-.guess-bar {
-  display:inline-flex;
-}
-
 form button  {
   size: large;
   width: 40px;
@@ -76,13 +72,15 @@ form button  {
   color: white;
 }
 
-form input ::placeholder{
+form input{
   text-align: center;
   margin: 0 auto;
   display: block;
   margin-top: 5px;
   size: large;
-  width: 400px;
+  width:50%;
+  margin-left:25%;
+  margin-right:25%;
   height: 40px;
 }
 
