@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  canvas {
+    background: #eee;
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+  }
+  
+  .title {
+    color: red;
+    font-size: 100px;
+    font-family: cursive;
+    text-align: center;
+  }
+  
+  .subTitle {
+    color: red;
+    font-size: 20px;
+    font-family: cursive;
+    text-align: center;
+  }
+  
+  .search {
+    margin: 0 auto;
+    display: block;
+    margin-top: 5px;
+    size: large;
+    width: 400px;
+    height: 40px;
+    text-align: center;
+  }
+  
+  .guesses {
+    color: blue;
+    font-size: 15px;
+    margin-top: 25px;
+    text-align: center;
+  }

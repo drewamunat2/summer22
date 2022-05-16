@@ -1,0 +1,26 @@
+{% extends "parent.njk" %}
+
+{% block room %}
+  <h1 class="title">Geekle</h1>
+    <h3 class="subTitle">GALAXYCON GUESSING GAME</h3>
+    <div class="guesses">0 of 8 guesses</div>
+    <input 
+      aria-invalid="false" 
+      autocomplete="off" 
+      disabled="" 
+      id="combo-box-demo" 
+      type="text" 
+      class="search" 
+      aria-autocomplete="list" 
+      aria-expanded="false" 
+      autocapitalize="none" 
+      spellcheck="false" 
+      role="combobox" 
+      value="Guess a character!">
+    <canvas id="myCanvas" width="480" height="600"></canvas>
+{% endblock %}
+
+{% block script %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script>
+  <script type="module" src="script.js"></script>
+{% endblock %}
