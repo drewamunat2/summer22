@@ -33,6 +33,8 @@
     "url": "git+https://github.com/drewamunat2/summer22/tree/main/geekle.git"
   },
   "devDependencies": {
-    "case-sensitive-paths-webpack-plugin": "^2.4.0"
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "jest": "^28.1.0",
+    "supertest": "^6.2.3"
   }
 }
