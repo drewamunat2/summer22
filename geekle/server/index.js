@@ -1,9 +1,15 @@
+//local
 require("dotenv").config();
+
 //app
 const express = require("express");
 const app = express();
 
-//more app
+//middleware
+const helmet = require("helmet");
+const cors = require("cors");
+
+//server
 const nunjucks = require("nunjucks");
 const debug = require("debug")("geekle");
 const http = require("http").Server(app);
@@ -36,6 +42,8 @@ nunjucks.configure("views", {
 });
 
 //middleware
+app.use(helmet());
+app.use(cors());
 app.use(express.static("assets"));
 app.use(express.json());
 
