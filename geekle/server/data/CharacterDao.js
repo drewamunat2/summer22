@@ -14,49 +14,47 @@ class CharacterDao {
     if (gender === undefined || gender === "") {
       throw new ApiError(400, "Every note must have a none-empty gender!");
     }
-    const char = new Character(name, gender);
-    this.characters.push(char);
+    const char = await Character.create({ name, gender });
     return char;
   }
 
   // Pre: id is a valid note ID
   async update(id, { name, gender }) {
-    const index = this.characters.findIndex((char) => char._id === id);
-    if (index === -1) {
-      throw new ApiError(404, "There is no character with the given ID!");
+    const char = await Character.findByIdAndUpdate(
+      id,
+      { name, gender },
+      { new: true, runValidators: true }
+    );  
+    if (char === null) {
+      throw new ApiError(404, "There is no note with the given ID!");
     }
-    if (name !== undefined) {
-      this.characters[index].name = name;
-    }
-    if (gender !== undefined) {
-      this.characters[index].gender = gender;
-    }
-    return this.characters[index];
+    return char;
   }
 
   // Pre: id is a valid note ID
   async delete(id) {
-    const index = this.characters.findIndex((char) => char._id === id);
-    if (index === -1) {
-      throw new ApiError(404, "There is no character with the given ID!");
+    const char = await Character.findByIdAndDelete(id);
+    if (char === null) {
+      throw new ApiError(404, "There is no note with the given ID!");
     }
-    const char = this.characters[index];
-    this.characters.splice(index, 1);
     return char;
   }
 
   // Pre: id is a valid note ID
   async read(id) {
-    return this.characters.find((char) => char._id === id);
+    const char = await Character.findById(id);
+    return char ? char : [];
   } 
 
+  // returns an empty array if there is no note in the database
+  // or no note matches the search query
   async readAll(query = "") {
     if (query !== "") {
-      return this.characters.filter(
-        (char) => char.name.includes(query)
-      );
-    }
-    return this.characters;
+      const characters = await Character.find().or([{ name: query }, { gender: query }]);
+      return characters;
+    } 
+    const characters = await Character.find({});
+    return characters;
   }
 }
 

@@ -1,11 +1,10 @@
-const { v4: uuidv4 } = require("uuid");
+const mongoose = require("mongoose");
 
-class Character {
-  constructor(name, gender) {
-    this._id = uuidv4();
-    this.name = name;
-    this.gender = gender;
-  }
-}
+const CharacterSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  gender: { type: String, required: true },
+});
 
-module.exports = Character;
+const Char = mongoose.model("Char", CharacterSchema);
+
+module.exports = Char;

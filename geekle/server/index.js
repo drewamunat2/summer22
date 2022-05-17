@@ -2,10 +2,10 @@ const express = require("express");
 const nunjucks = require("nunjucks");
 const app = express();
 const port = process.env.PORT || 5050;
-//const debug = require("debug")("geekle");
+const debug = require("debug")("geekle");
 const http = require("http").Server(app);
-//const io = require("socket.io")(http);
-//const db = require("./data/Db");
+const io = require("socket.io")(http);
+const db = require("./data/db");
 const CharacterDao = require("./data/CharacterDao");
 
 const charactersArray = [
@@ -25,23 +25,7 @@ const charactersArray = [
 ];
 
 const sampleCharacters = new CharacterDao();
-
-sampleCharacters.create({
-  name: "Batman",
-  gender: "male",
-});
-sampleCharacters.create({
-  name: "Superman",
-  gender: "male",
-});
-sampleCharacters.create({
-  name: "Skeletor",
-  gender: "male",
-});
-
-
-//db.connect();
-
+db.connect();
 
 
 nunjucks.configure("views", {
@@ -58,10 +42,6 @@ app.get("/", (req, res) => {
 
 app.get("/game", (req, res) => {
   res.render("game.njk");
-});
-
-app.listen(port, () => {
-  console.log(`Express app listening at port: http://localhost:${port}/`);
 });
 
 app.get("/api/characters", async (req, res) => {
@@ -105,4 +85,8 @@ app.put("/api/characters/:id", async (req, res) => {
   } catch (err) {
     res.status(err.status).json({ message: err.message });
   }
+});
+
+app.listen(port, () => {
+  console.log(`Express app listening at port: http://localhost:${port}/`);
 });
