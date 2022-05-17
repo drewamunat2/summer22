@@ -15,7 +15,6 @@ canvas {
   background: grey;
   display: block;
   margin: 0 auto;
-  margin-top: 25px;
 }
 
 .background {
@@ -99,5 +98,40 @@ form label {
   font-size: 50px;
   font-weight: 700;
   border: 2px solid black;
+}
+
+.middle {
+  display: inline-block;
+  color: blue;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.categories {
+  margin-top: 20px;
+}
+
+.responses {
+  background-color: grey;
+}
+
+.all-answers {
+  color: black;
+}
+
+.answer {
+ color: white;
+ height: 50px;
+}
+
+.name-guess {
+  height:30px;
+  font-weight: 700;
+  size: 100px;
+  color: blue;
+}
+
+span {
+  color: black;
 }
 

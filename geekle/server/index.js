@@ -12,8 +12,6 @@ const cors = require("cors");
 //server
 const nunjucks = require("nunjucks");
 const debug = require("debug")("geekle");
-const http = require("http").Server(app);
-const io = require("socket.io")(http);
 
 //data
 const characters = require("../server/routes/characters.js");
