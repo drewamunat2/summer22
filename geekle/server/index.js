@@ -5,8 +5,12 @@ const port = process.env.PORT || 5050;
 const debug = require("debug")("geekle");
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
-const db = require("./data/db");
-const CharacterDao = require("./data/CharacterDao");
+
+//data
+const db = require("../server/data/db");
+const CharacterDao = require("../server/data/CharacterDao");
+const sampleCharacters = new CharacterDao();
+db.connect();
 
 const charactersArray = [
   "Batman",
@@ -23,10 +27,6 @@ const charactersArray = [
   "Gill-Man",
   "Frank N. Furter"
 ];
-
-const sampleCharacters = new CharacterDao();
-db.connect();
-
 
 nunjucks.configure("views", {
   autoescape: true,
