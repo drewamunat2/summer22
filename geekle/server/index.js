@@ -1,7 +1,7 @@
+require("dotenv").config();
 //app
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 5050;
 
 //more app
 const nunjucks = require("nunjucks");
@@ -10,9 +10,7 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 
 //data
-const db = require("../server/data/db");
-const characters = require("../server/routes/characters.js")
-db.connect(); //mongoose
+const characters = require("../server/routes/characters.js");
 
 //dummy array
 const charactersArray = [
@@ -53,6 +51,4 @@ app.get("/game", (req, res) => {
 //routing
 app.use(characters);
 
-app.listen(port, () => {
-  console.log(`Express app listening at port: http://localhost:${port}/`);
-});
+module.exports = app;
