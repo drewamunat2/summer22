@@ -11,7 +11,7 @@ const io = require("socket.io")(http);
 
 //data
 const db = require("../server/data/db");
-const characters = require("../server/routes/characters")
+const characters = require("../server/routes/characters.js")
 db.connect(); //mongoose
 
 //dummy array
@@ -51,7 +51,7 @@ app.get("/game", (req, res) => {
 });
 
 //routing
-app.use(express.static("characters"));
+app.use(characters);
 
 app.listen(port, () => {
   console.log(`Express app listening at port: http://localhost:${port}/`);

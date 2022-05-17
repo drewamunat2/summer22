@@ -46,4 +46,5 @@ router.put("/api/characters/:id", async (req, res) => {
         res.status(err.status).json({ message: err.message });
     }
 });
-  
+
+module.exports = router;
