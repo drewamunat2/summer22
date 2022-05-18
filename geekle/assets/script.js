@@ -73,15 +73,17 @@ input.addEventListener('input', (e) => {
 });
 
 const result = (guess) => {
-  //name guessed
-  const title = document.createElement("li");
-  title.className = "name-guess";
-  answers.appendChild(title);
 
   console.log(guess);
 
-  //the guess and its response attributes
+  //name guessed
   const text = document.createElement("li");
+  const title = document.createElement("span");
+  title.innerText = `${guess.name}`;
+  title.className = "name-guess";
+  text.appendChild(title);
+
+  //the guess and its response attributes
   const gender = document.createElement("span");
   const show = document.createElement("span");
   const genre = document.createElement("span");
@@ -104,10 +106,9 @@ const result = (guess) => {
   text.appendChild(creator);
   text.appendChild(platform);
   text.appendChild(year);
-  text.className = "game-answer";
+  text.className = "answer-li";
 
   //add name and answer box to all answers
   answers.appendChild(text);
-  answers.className = "all-answers";
   answers.scrollTop = answers.scrollHeight;
 };

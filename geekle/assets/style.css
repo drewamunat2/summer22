@@ -9,22 +9,7 @@ body {
   background-position: center;
   margin-top: 20px;
   margin-bottom: 10px;
-}
-  
-canvas {
-  background: grey;
-  display: block;
-  margin: 0 auto;
-}
-
-.background {
-  background-color: aqua;
-  background-size:50px;
-  width:40%;
-  margin-left:30%;
-  margin-right:30%;
   height: 100%;
-  border: 2px solid black;
 }
 
 .title {
@@ -50,46 +35,7 @@ canvas {
   margin-right:30%;
 }
 
-.guesses {
-  color: blue;
-  font-size: 15px;
-  margin-top: 25px;
-  text-align: center;
-  background-color: aqua;
-  width:40%;
-  margin-left:30%;
-  margin-right:30%;
-}
-
-form button  {
-  size: large;
-  width: 40px;
-  height: 40px;
-  background: #000051;
-  border: none;
-  padding: 10px;
-  color: white;
-}
-
-.input{
-  text-align: center;
-  margin: 0 auto;
-  display: block;
-  margin-top: 5px;
-  size: large;
-  width:50%;
-  margin-left:25%;
-  margin-right:25%;
-  height: 40px;
-}
-
-.guess-bar {
-  margin-bottom: 25px;
-}
-
-#guess-bar label {
-  display: none;
-}
+/* index */
 
 .play-button {
   background-color: red;
@@ -104,41 +50,47 @@ form button  {
   border: 2px solid black;
 }
 
-.middle {
-  display: inline-block;
+/* game */
+.background {
+  background-color: aqua;
+  background-size:50px;
+  width:40%;
+  margin-left:30%;
+  margin-right:30%;
+  height: 100%;
+  border: 2px solid black;
+}
+
+.guesses {
   color: blue;
-  margin-left: 20px;
-  margin-right: 20px;
+  font-size: 15px;
+  margin-top: 25px;
+  text-align: center;
+  background-color: aqua;
+  width:40%;
+  margin-left:30%;
+  margin-right:30%;
 }
 
-#answers ul {
-  margin-top: 20px;
-  list-style-type: none;
+.guess-bar {
+  margin-bottom: 25px;
 }
 
-#answers li {
-  padding: 5px 10px;
+#guess-bar label {
+  display: none;
 }
 
-.responses {
-  background-color: grey;
-}
-
-.answer {
- color: white;
- height: 50px;
-}
-
-.name-guess {
-  height:30px;
-  font-weight: 700;
-  size: 100px;
-  color: blue;
-}
-
-span {
-  color: red;
-  margin: 0 15px;
+.input{
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  size: large;
+  width:50%;
+  margin-left:25%;
+  margin-right:25%;
+  height: 40px;
 }
 
 [type="search"]::-webkit-search-cancel-button,
@@ -147,12 +99,25 @@ span {
   appearance: none;
 }
 
-.all-answers {
+.category-container {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
   margin-top: 20px;
-  list-style-type: none;
 }
 
-.game-answer {
+.categories {
+  display: inline-flex;
+}
+
+.special-category {
+  margin-left: 60px;
+  margin-right: 60px;
+  color: aqua;
+  display: inline-block;
+}
+
+.regular-categories {
   display: inline-block;
   color: blue;
   margin-left: 20px;
@@ -168,9 +133,32 @@ span {
   height: 100%;
 }
 
-.border-box {
-  font-family: Readex Pro,sans-serif;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+#box-surrounding-allAnswers ul {
+  list-style-type: none;
+}
+
+/* innerText */
+.answer-li {
+  padding: 25px 10px;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  outline: 1px solid #000;
+}
+
+/* innerText */
+.name-guess {
+  height:30px;
+  font-weight: 700;
+  size: 100px;
+  color: blue;
+}
+
+/* innerText */
+span {
+  color: red;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
 }

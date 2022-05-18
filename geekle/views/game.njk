@@ -2,9 +2,15 @@
 
 {% block room %}
 <div class="background">
-  <h1 class="title">Geekle</title>
-    <h3 class="subTitle">GALAXYCON CHARACTER GUESSING GAME</h3>
-    <div class="guesses">0 of 8 guesses</div>
+  <h1 class="title">
+    Geekle
+  </title>
+    <h3 class="subTitle">
+      GALAXYCON CHARACTER GUESSING GAME
+    </h3>
+    <div class="guesses">
+      0 of 8 guesses
+    </div>
     <div class="guess-bar">
       <label for="charName">{{ name }}</label>
       <input 
@@ -32,18 +38,21 @@
         <option value="Frank N. Furter">
       </datalist>
     </div>
-    <ul class="categories" id="categories">
-      <li class="middle"></li>
-      <li class="middle">Gender</li>
-      <li class="middle">Show</li>
-      <li class="middle">Genre</li>
-      <li class="middle">Creator</li>
-      <li class="middle">Platform</li>
-      <li class="middle">Year</li>
-    </ul>
+    <div class="category-container>
+      <ul class="categories" id="categories">
+        <li class="special-category">.</li>
+        <li class="regular-categories">Gender</li>
+        <li class="regular-categories">Show</li>
+        <li class="regular-categories">Genre</li>
+        <li class="regular-categories">Creator</li>
+        <li class="regular-categories">Platform</li>
+        <li class="regular-categories">Year</li>
+      </ul>
+    </div>
     <div class="box-surrounding-allAnswers">
       <ul class="all-answers" id="all-answers"></ul>
     </div>
+  </div>
 {% endblock %}
 
 {% block script %}
