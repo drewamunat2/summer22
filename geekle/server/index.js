@@ -16,23 +16,6 @@ const debug = require("debug")("geekle");
 //data
 const characters = require("../server/routes/characters.js");
 
-//dummy array
-const charactersArray = [
-  "Batman",
-  "Superman",
-  "Darth Vader",
-  "Bubbles",
-  "Goku",
-  "Harry Potter",
-  "Captain Kirk",
-  "Zelda",
-  "Skeletor",
-  "Mario",
-  "Rick O’Connell",
-  "Gill-Man",
-  "Frank N. Furter"
-];
-
 //templating
 nunjucks.configure("views", {
   autoescape: true,
