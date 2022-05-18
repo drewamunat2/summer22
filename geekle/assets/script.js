@@ -18,6 +18,7 @@ const charactersArray = [
 ];
 
 const charMap = new Map(); //characters and their attributes
+let numGuesses = 0;
 
 
 //batman
@@ -32,7 +33,6 @@ charMap.set(
   ['male', 'Superman', 'Superhero', 'Christopher Nolan', 'DC Comics', '1933']
 );
 
-const form = document.getElementById("guess");
 const answers = document.getElementById("all-answers");
 const categories = document.getElementById("categories");
 const input = document.getElementById("charName");
@@ -70,10 +70,19 @@ input.addEventListener('input', (e) => {
       }
       result(guess);
       input.value = "";
-      numGuessesDisplay.innerText = `${answers.getElementsByClassName("answer-li").length} of 8 guesses`;
+      numGuesses = assertNumGuesses(answers.getElementsByClassName("answer-li").length, input);
+      numGuessesDisplay.innerText = `${numGuesses} of 8 guesses`;
+      
     }
     keypress = false;
 });
+
+const assertNumGuesses = (numGuesses, input) => {
+  if (numGuesses > 7) {
+    input.disabled = true;
+  }
+  return numGuesses;
+}
 
 const result = (guess) => {
 
