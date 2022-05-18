@@ -5,18 +5,20 @@
   <h1 class="title">Geekle</title>
     <h3 class="subTitle">GALAXYCON CHARACTER GUESSING GAME</h3>
     <div class="guesses">0 of 8 guesses</div>
-    <form id="guess" class="guess-bar" role="search">
-      <label for="charName">First name:</label>
+    <div class="guess-bar">
+      <label for="charName">{{ name }}</label>
       <input 
+        class="input"
         type="search" 
         id="charName" 
         name="charName"
         autocomplete="off"
+        autofocus="on"
         list="character-list"
       />
       <datalist id="character-list">
         <option value="Batman">
-        <option value="Superman">
+        <option value="Superman" id="Superman">
         <option value="Darth Vader">
         <option value="Bubbles">
         <option value="Goku">
@@ -29,7 +31,7 @@
         <option value="Gill-Man">
         <option value="Frank N. Furter">
       </datalist>
-    </form>
+    </div>
     <ul class="categories" id="categories">
       <li class="middle"></li>
       <li class="middle">Gender</li>
@@ -43,6 +45,5 @@
 {% endblock %}
 
 {% block script %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script>
   <script src="script.js"></script>
 {% endblock %}

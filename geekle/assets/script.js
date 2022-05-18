@@ -1,26 +1,35 @@
 //client
 
-document.addEventListener("DOMContentLoaded", (_event) => {
-
+//document.addEventListener("DOMContentLoaded", (_event) => {
   // Connect to socket.io
-  const socket = io(); // automatically tries to connect on same port app was served from
+  //const socket = io(); // automatically tries to connect on same port app was served from
   const form = document.getElementById("guess");
   const answers = document.getElementById("all-answers");
   const categories = document.getElementById("categories");
   const input = document.getElementById("charName");
+  const dataList = document.getElementById("character-list");
 
-  input.addEventListener("oninput", (event) => {
-    console.log("event: onInput")
-    socket.emit("guess", {
-      message: input.value,
-      type: "guess",
-    });
-    input.value = "";
-    event.preventDefault();
+  //makes submission of a guess only possible if an option is clicked on
+  let keypress = false;
+  input.addEventListener("keydown", (e) => {
+      if(e.key) {
+          console.log("keydown triggered by keyboard");
+          keypress = true;
+      }
+  });
+  input.addEventListener('input', (e) => {
+      let guess = e.target.value;
+      if (keypress === false) {
+        console.log("event input triggered by selecting an option");
+        console.log("Value: " + guess);
+      }
+      keypress = false;
   });
 
+
+
   //all messages reveceived from server
-  socket.on("message", (msg) => {
+  /*socket.on("message", (msg) => {
     let type = msg.type;
     switch(type) {
       //on input
@@ -67,4 +76,4 @@ document.addEventListener("DOMContentLoaded", (_event) => {
         break;
     }
   });
-});
+//});*/

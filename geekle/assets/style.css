@@ -71,7 +71,7 @@ form button  {
   color: white;
 }
 
-form input{
+.input{
   text-align: center;
   margin: 0 auto;
   display: block;
@@ -83,7 +83,11 @@ form input{
   height: 40px;
 }
 
-form label {
+.guess-bar {
+  margin-bottom: 25px;
+}
+
+#guess-bar label {
   display: none;
 }
 
@@ -107,8 +111,13 @@ form label {
   margin-right: 20px;
 }
 
-.categories {
+#answers ul {
   margin-top: 20px;
+  list-style-type: none;
+}
+
+#answers li {
+  padding: 5px 10px;
 }
 
 .responses {
@@ -133,5 +142,11 @@ form label {
 
 span {
   color: black;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
