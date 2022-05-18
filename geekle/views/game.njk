@@ -5,58 +5,47 @@
   <h1 class="title">
     Geekle
   </title>
-    <h3 class="subTitle">
-      GALAXYCON CHARACTER GUESSING GAME
-    </h3>
-    <div class="guesses">
-      <h4
-        class="num-guesses" 
-        id="num-guesses"
-        placeholder=""
-      />
-    </div>
-    <div class="guess-bar">
-      <label for="charName">{{ name }}</label>
-      <input 
-        class="input"
-        type="search" 
-        id="charName" 
-        name="charName"
-        autocomplete="off"
-        autofocus="on"
-        list="character-list"
-      />
-      <datalist id="character-list">
-        <option value="Batman">
-        <option value="Superman" id="Superman">
-        <option value="Darth Vader">
-        <option value="Bubbles">
-        <option value="Goku">
-        <option value="Harry Potter">
-        <option value="Captain Kirk">
-        <option value="Zelda">
-        <option value="Skeletor">
-        <option value="Mario">
-        <option value="Rick O’Connell">
-        <option value="Gill-Man">
-        <option value="Frank N. Furter">
-      </datalist>
-    </div>
-    <div class="category-container>
-      <ul class="categories" id="categories">
-        <li class="special-category">.</li>
-        <li class="regular-categories">Gender</li>
-        <li class="regular-categories">Show</li>
-        <li class="regular-categories">Genre</li>
-        <li class="regular-categories">Creator</li>
-        <li class="regular-categories">Platform</li>
-        <li class="regular-categories">Year</li>
-      </ul>
-    </div>
-    <div class="box-surrounding-allAnswers">
-      <ul class="all-answers" id="all-answers"></ul>
-    </div>
+  <h3 class="subTitle">
+    GALAXYCON CHARACTER GUESSING GAME
+  </h3>
+  <div class="guesses">
+    <h4
+      class="num-guesses" 
+      id="num-guesses"
+      placeholder=""
+    />
   </div>
+  <div class="guess-bar">
+    <label for="charName">{{ name }}</label>
+    <input 
+      class="input"
+      type="search" 
+      id="charName" 
+      name="charName"
+      autocomplete="off"
+      autofocus="on"
+      list="character-list"
+    />
+    <datalist id="character-list">
+      <option value="Batman">
+      <option value="Superman" id="Superman">
+    </datalist>
+  </div>
+  <div class="category-container>
+    <ul class="categories" id="categories">
+      <li class="special-category">.</li>
+      <li class="regular-categories">Gender</li>
+      <li class="regular-categories">Show</li>
+      <li class="regular-categories">Genre</li>
+      <li class="regular-categories">Creator</li>
+      <li class="regular-categories">Platform</li>
+      <li class="regular-categories">Year</li>
+    </ul>
+  </div>
+  <div class="box-surrounding-allAnswers">
+    <ul class="all-answers" id="all-answers"></ul>
+  </div>
+</div>
 {% endblock %}
 
 {% block script %}

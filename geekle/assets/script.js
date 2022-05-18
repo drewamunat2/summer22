@@ -24,13 +24,13 @@ let numGuesses = 0;
 //batman
 charMap.set(
   'Batman', 
-  ['male', 'Batman', 'Superhero', 'Bob Kane', 'DC Comics', '1939']
+  ['male', 'Batman', 'Superhero', 'Bob Kane', 'DC Comics', '1939', 'true']
 );
 
 //superman
 charMap.set(
   'Superman', 
-  ['male', 'Superman', 'Superhero', 'Christopher Nolan', 'DC Comics', '1933']
+  ['male', 'Superman', 'Superhero', 'Christopher Nolan', 'DC Comics', '1933', 'false']
 );
 
 const answers = document.getElementById("all-answers");
@@ -54,28 +54,35 @@ input.addEventListener('input', (e) => {
       console.log("Value: " + name);
       const guess = {
         name: name,
-        /*gender: charMap[name][0],
-        show: charMap[name][1],
-        genre: charMap[name][2],
-        creator: charMap[name][3],
-        platform: charMap[name][4],
-        year: charMap[name][5]*/
-
-        gender: 'male',
-        show: 'Superman',
-        genre: 'Superhero',
-        creator: 'Christopher Nolan',
-        platform: 'DC Comics',
-        year: '1933'
+        gender: charMap.get(name)[0],
+        show: charMap.get(name)[1],
+        genre: charMap.get(name)[2],
+        creator: charMap.get(name)[3],
+        platform: charMap.get(name)[4],
+        year: charMap.get(name)[5],
+        win: charMap.get(name)[6]
       }
       result(guess);
       input.value = "";
       numGuesses = assertNumGuesses(answers.getElementsByClassName("answer-li").length, input);
       numGuessesDisplay.innerText = `${numGuesses} of 8 guesses`;
-      
+      if(assertWin(guess.win)) {
+        alert("CORRECT! YOU WIN!");
+      }
+      if(numGuesses === 8) {
+        alert("OUT OF GUESSES! YOU LOSE!");
+      }
     }
     keypress = false;
 });
+
+const assertWin = (win) => {
+  if (win === 'true') {
+    input.disabled = true;
+    return true;
+  }
+  return false;
+}
 
 const assertNumGuesses = (numGuesses, input) => {
   if (numGuesses > 7) {
