@@ -19,6 +19,7 @@ const charactersArray = [
 
 const charMap = new Map(); //characters and their attributes
 
+
 //batman
 charMap.set(
   'Batman', 
@@ -36,6 +37,7 @@ const answers = document.getElementById("all-answers");
 const categories = document.getElementById("categories");
 const input = document.getElementById("charName");
 const dataList = document.getElementById("character-list");
+const numGuessesDisplay = document.getElementById("num-guesses");
 
 //makes submission of a guess only possible if an option is clicked on
 let keypress = false;
@@ -68,6 +70,7 @@ input.addEventListener('input', (e) => {
       }
       result(guess);
       input.value = "";
+      numGuessesDisplay.innerText = `${answers.getElementsByClassName("answer-li").length} of 8 guesses`;
     }
     keypress = false;
 });
