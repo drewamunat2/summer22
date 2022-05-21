@@ -103,6 +103,14 @@ body {
   appearance: none;
 }
 
+.character-list-datalist {
+  width: 100%;
+}
+
+.hovercoloring:hover {
+  background-color: yellow;
+}
+
 .category-container {
   width: 70%;
   margin-left: 15%;

@@ -1,5 +1,7 @@
 //game script
 
+//import {results} from './connection';
+
 //dummy array
 const charactersArray = [
   "Batman",
@@ -19,7 +21,6 @@ const charactersArray = [
 
 const charMap = new Map(); //characters and their attributes
 let numGuesses = 0;
-
 
 //batman
 charMap.set(
@@ -42,7 +43,8 @@ const numGuessesDisplay = document.getElementById("num-guesses");
 //makes submission of a guess only possible if an option is clicked on
 let keypress = false;
 input.addEventListener("keydown", (e) => {
-    if(e.key) {
+    console.log(e.key);
+    if(e.key && (e.key !== "Enter")) {
         console.log("keydown triggered by keyboard");
         keypress = true;
     }
