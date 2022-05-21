@@ -2,8 +2,12 @@ const {MongoClient} = require('mongodb');
 //import Realm from "realm";
 let charResults = {};
 
+console.log("connection");
+
 async function main() {
 	// we'll add code here soon
+
+  console.log("main");
 
   /**
    * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
@@ -22,8 +26,12 @@ async function main() {
     correct: ''
   }
 
+  console.log("about to try");
+
   try {
     await client.connect();
+
+    console.log("connected");
 
     await listDatabases(client);
 
@@ -66,4 +74,4 @@ async function findCharacters(client) {
   return results;
 }
 
-module.exports = charResults;
+module.exports = { main };
