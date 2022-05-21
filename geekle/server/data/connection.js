@@ -39,6 +39,15 @@ async function main() {
     await client.close();
   } 
 
+<<<<<<< HEAD
+=======
+  /*client.connect((err) => {
+    const collection = client.db('test').collection('devices');
+    // perform actions on the collection object
+    client.close();
+  });*/
+
+>>>>>>> ba15eb3205459b6eb097485372fba88b830cb7c1
 }
 
 main().catch(console.error);
