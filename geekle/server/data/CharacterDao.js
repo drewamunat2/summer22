@@ -50,7 +50,7 @@ class CharacterDao {
   // or no note matches the search query
   async readAll(query = "") {
     if (query !== "") {
-      const characters = await Character.find().or([{ name: query }, { gender: query }]);
+      const characters = await Character.find().or([{ name: query }]);
       return characters;
     } 
     const characters = await Character.find({});
