@@ -2,6 +2,10 @@
 require("dotenv").config();
 const {MongoClient} = require('mongodb');
 
+//path
+const path = require('path');
+const assetsPath = path.join(__dirname, '/../assets');
+
 //app
 const express = require("express");
 const app = express();
@@ -98,7 +102,8 @@ nunjucks.configure("views", {
 //middleware
 app.use(helmet());
 app.use(cors());
-app.use(express.static("assets"));
+app.use(express.static(assetsPath));
+
 app.use(express.json());
 
 //server
@@ -107,10 +112,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/game", (req, res) => {
-  res.render("game.njk");
+  res.render("game.njk", null);
 });
 
 //routing
-app.use(characters);
+app.use('/game', characters);
 
 module.exports = app;

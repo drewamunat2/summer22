@@ -1,6 +1,7 @@
 //game script
-
 //import {results} from './connection';
+
+
 
 //dummy array
 const charactersArray = [
