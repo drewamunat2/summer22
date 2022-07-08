@@ -1,7 +1,20 @@
 //game script
 //import {results} from './connection';
 
+/*const fetchCharacters = async () => {
+  const url = 'http://localhost:3001/characters';
+  fetch(url)
+    .then(res => res.json())
+    .then(json => {
+      // randomly generate int 0-12
+      console.log(json);
+      return;
+  });
+};
 
+document.addEventListener("DOMContentLoaded", (_event) => {
+  fetchCharacters();
+});*/
 
 //dummy array
 const charactersArray = [

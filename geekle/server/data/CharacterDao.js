@@ -18,7 +18,7 @@ class CharacterDao {
     return char;
   }
 
-  // Pre: id is a valid note ID
+  // Pre: id is a valid char ID
   async update(id, { name, gender }) {
     const char = await Character.findByIdAndUpdate(
       id,
@@ -31,7 +31,7 @@ class CharacterDao {
     return char;
   }
 
-  // Pre: id is a valid note ID
+  // Pre: id is a valid char ID
   async delete(id) {
     const char = await Character.findByIdAndDelete(id);
     if (char === null) {
@@ -40,7 +40,7 @@ class CharacterDao {
     return char;
   }
 
-  // Pre: id is a valid note ID
+  // Pre: id is a valid char ID
   async read(id) {
     const char = await Character.findById(id);
     return char ? char : [];

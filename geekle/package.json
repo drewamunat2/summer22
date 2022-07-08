@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "DEBUG=bloo-chat nodemon .",
     "start": "node .",
-    "test": "jest"
+    "test": "jest",
+    "server": "json-server --watch db.json",
+    "ngrok": "ngrok http 3000"
   },
   "keywords": [],
   "author": "Drew Amunategui",
@@ -22,6 +24,7 @@
     "faker": "^5.5.3",
     "helmet": "^5.1.0",
     "jquery": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.3",
     "node": "^17.7.2",

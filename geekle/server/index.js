@@ -1,5 +1,5 @@
 //local
-require("dotenv").config();
+/*require("dotenv").config();
 const {MongoClient} = require('mongodb');
 
 //path
@@ -25,13 +25,28 @@ const characters = require("../server/routes/characters.js");
 
 let charResults = {};
 
+const fetchCharacters = async () => {
+  const url = 'http://localhost:3001/characters';
+  fetch(url)
+    .then(res => res.json())
+    .then(json => {
+      // randomly generate int 0-12
+      console.log(json);
+      return ;
+  });
+};
+
+document.addEventListener("DOMContentLoaded", (_event) => {
+  fetchCharacters();
+});
+
 async function main() {
 	// we'll add code here soon
 
   /**
    * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
    * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-   */
+   /
   const uri = "mongodb+srv://drewamunat2:8SIQTQeHcJnjpCzq@geekle-characters.gaskn.mongodb.net/?retryWrites=true&w=majority";
   const client = new MongoClient(uri, { useNewUrlParser: true });
   const charMap = new Map();
@@ -117,5 +132,33 @@ app.get("/game", (req, res) => {
 
 //routing
 app.use('/game', characters);
+
+module.exports = app;*/
+
+require("dotenv").config();
+const characters = require("./routes/characters.js");
+const users = require("./routes/users.js");
+const auth = require("./routes/auth.js");
+const { globalErrorHandler } = require("./util/middleware");
+const cors = require("cors");
+const helmet = require("helmet");
+
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use(helmet());
+
+app.get("/", (req, res) => {
+  res.send("Geekle Character API!");
+});
+
+// routing
+app.use(characters);
+app.use(users);
+app.use(auth);
+
+app.use(globalErrorHandler);
 
 module.exports = app;

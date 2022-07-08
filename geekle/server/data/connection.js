@@ -46,8 +46,8 @@ main().catch(console.error);
 async function listDatabases(client){
   databasesList = await client.db().admin().listDatabases();
 
-  console.log("Databases:");
-  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+  //console.log("Databases:");
+  //databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
 async function findCharacters(client) {
@@ -57,12 +57,12 @@ async function findCharacters(client) {
     .find()
   const results = await cursor.toArray();
   if (results.length > 0) {
-    console.log(`Found ${results.length} character(s):`);
+    //console.log(`Found ${results.length} character(s):`);
     results.forEach((result, i) => {
-      console.log(result);
+      //console.log(result);
     });
   }
-  console.log(results);
+  //console.log(results);
   return results;
 }
 
