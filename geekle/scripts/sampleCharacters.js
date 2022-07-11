@@ -4,7 +4,6 @@ const CharacterDao = require("../server/data/CharacterDao");
 async function createSampleCharacters() {
   try {
     await db.connect();
-
     const characters = new CharacterDao();
     const character = await characters.create({
       name: "Batman",
@@ -21,7 +20,6 @@ async function createSampleCharacters() {
         platform: "movies", allPlatforms: ["movies", "tv series", "video games"], owner: "DC Comics", trademarkOwner: "DC COMICS", distributor: "Warner Bros. Pictures", universe: "DC",
         role: "titular protagonist", genRole: "good",
         year: 1939, decade: 1930,
-        id: 1
       }
     });
     console.log(character);

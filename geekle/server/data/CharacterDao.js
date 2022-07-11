@@ -7,22 +7,41 @@ class CharacterDao {
   }
 
   // Pre: title and text are not undefined, and title is not empty
-  async create({ name, gender }) {
+  async create({ 
+    name, selectName,
+    shop, thumbnail: { title, image },
+    characteristics : { gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade },
+    author
+  }) {
     if (name === undefined || name === "") {
       throw new ApiError(400, "Every note must have a none-empty name!");
     }
-    if (gender === undefined || gender === "") {
-      throw new ApiError(400, "Every note must have a none-empty gender!");
+    if (selectName === undefined || selectName === "") {
+      throw new ApiError(400, "Every note must have a none-empty selectName!");
     }
-    const char = await Character.create({ name, gender });
+    const char = await Character.create({ 
+      name, selectName,
+      shop, thumbnail: { title, image },
+      characteristics : { gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade },
+      author
+    });
     return char;
   }
 
   // Pre: id is a valid char ID
-  async update(id, { name, gender }) {
+  async update(id, { 
+    name, selectName,
+    shop, thumbnail: { title, image },
+    characteristics : { gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade },
+    author
+  }) {
     const char = await Character.findByIdAndUpdate(
       id,
-      { name, gender },
+      { name, selectName,
+        shop, thumbnail: { title, image },
+        characteristics : { gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade },
+        author
+      },
       { new: true, runValidators: true }
     );  
     if (char === null) {
@@ -50,7 +69,7 @@ class CharacterDao {
   // or no note matches the search query
   async readAll(query = "") {
     if (query !== "") {
-      const characters = await Character.find().or([{ name: query }]);
+      const characters = await Character.find().or([{ name: query, selectName: query }]);
       return characters;
     } 
     const characters = await Character.find({});

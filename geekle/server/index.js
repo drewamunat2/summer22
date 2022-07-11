@@ -152,13 +152,6 @@ app.use(helmet());
 
 //server
 const nunjucks = require("nunjucks");
-const debug = require("debug")("geekle");
-
-//templating
-nunjucks.configure("views", {
-  autoescape: true,
-  express: app,
-});
 
 app.get("/", (req, res) => {
   res.send("Geekle Character API!");

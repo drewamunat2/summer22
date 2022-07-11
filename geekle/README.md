@@ -1,4 +1,4 @@
-Geekle is a character guessing game for Galaxycon LLC built with Node, Express, and Socket.io
+Geekle Character API with admin restricted access
 
 The application is built on [Github](https://github.com/drewamunat2/summer22/tree/main/geekle.git)
 

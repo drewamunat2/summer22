@@ -18,7 +18,7 @@ const CharacterSchema = new mongoose.Schema({
     title: {type: String, required: true},
     image: {type: String, required: true},
   },
-  characteristics : {
+  characteristics: {
     gender: {type: String, required: true, lowercase: true},
     species: {type: String, required: true, lowercase: true},
     appearsIn: {type: String, required: true},
@@ -35,7 +35,6 @@ const CharacterSchema = new mongoose.Schema({
     genRole: {type: String, required: true, lowercase: true}, 
     year: {type: Number, required: true},
     decade: {type: Number, required: true},
-    id: Number
   },
   createdAt: {type: Date, immutable: true, default: () => Date.now()},
   updatedAt: {type: Date, default: () => Date.now()},
@@ -44,6 +43,11 @@ const CharacterSchema = new mongoose.Schema({
 
 CharacterSchema.pre("save", function(next) {
   this.updatedAt = Date.now();
+  next();
+});
+
+CharacterSchema.post("save", function(docs, next) {
+  console.log(`made by ${docs.author.username}`)
   next();
 });
 
