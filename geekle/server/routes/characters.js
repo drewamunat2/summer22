@@ -21,12 +21,10 @@ router.get("/api/characters/:id", async (req, res) => {
 });
 
 router.get("/api/solution", async (req, res) => {
-  const { date } = req.query;
-  console.log("get solution character for today: " + date);
-  const data = await characterDao.readAll();
-  const solution = data[0];
-  console.log("all characters: " + data);
-  console.log("character: " + solution);
+  const { num } = req.query;
+  console.log("get solution character index for today: " + num);
+  const solution = await characterDao.findByNum(num);
+  console.log("solution character: " + solution);
   res.json({ solution });
 });
 

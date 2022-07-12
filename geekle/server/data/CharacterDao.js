@@ -121,6 +121,14 @@ class CharacterDao {
     return char ? char : [];
   } 
 
+  // Pre: num is a valid index in the character list
+  async findByNum(num) {
+    console.log("findByNum method. num: " + num);
+    const solution = await Character.find().or([{ num: num }]);
+    console.log("solution: " + solution);
+    return solution;
+  }
+
   // returns an empty array if there is no note in the database
   // or no note matches the search query
   async readAll(query = "") {
