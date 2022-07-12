@@ -11,7 +11,7 @@ class CharacterDao {
     name, selectName,
     shop, title, image,
     gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-    
+    num
   }) {
     console.log("create method")
     if (name === undefined || name === "") {
@@ -65,11 +65,14 @@ class CharacterDao {
     if (decade === undefined || decade === "") {
       throw new ApiError(400, "Every note must have a none-empty decade!");
     }
+    if (num === undefined || num === "") {
+      throw new ApiError(400, "Every note must have a none-empty num!");
+    }
     const char = await Character.create({ 
       name, selectName,
       shop, title, image,
       gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-      
+      num
     });
     console.log("created character: " + char);
     return char;
@@ -80,7 +83,7 @@ class CharacterDao {
     name, selectName,
     shop, title, image,
     gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-    
+    num
   }) {
     console.log("update method")
     const char = await Character.findByIdAndUpdate(
@@ -88,7 +91,7 @@ class CharacterDao {
       { name, selectName,
         shop, title, image,
         gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-        
+        num
       },
       { new: true, runValidators: true }
     );  

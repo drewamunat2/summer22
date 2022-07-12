@@ -20,6 +20,16 @@ router.get("/api/characters/:id", async (req, res) => {
     res.json({ data: data ? data : [] });
 });
 
+router.get("/api/solution", async (req, res) => {
+  const { date } = req.query;
+  console.log("get solution character for today: " + date);
+  const data = await characterDao.readAll();
+  const solution = data[0];
+  console.log("all characters: " + data);
+  console.log("character: " + solution);
+  res.json({ solution });
+});
+
 router.post("/api/characters", async (req, res) => {
   console.log("post character.  req.body:" + req.body);
     try {
@@ -27,7 +37,7 @@ router.post("/api/characters", async (req, res) => {
           name, selectName,
           shop, title, image,
           gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-          
+          num
         } = req.body;
         console.log(name)
         console.log(selectName)
@@ -35,7 +45,7 @@ router.post("/api/characters", async (req, res) => {
           name, selectName,
           shop, title, image,
           gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-          
+          num
         });
         console.log("new character: " + data);
         res.status(201).json({ data });
@@ -67,13 +77,13 @@ router.put("/api/characters/:id", async (req, res) => {
           name, selectName,
           shop, title, image,
           gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-          
+          num
         } = req.body;
         const data = await characterDao.update(id, { 
           name, selectName,
           shop, title, image,
           gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-          
+          num
         });
         res.json({ data });
         console.log("new character: " + data);

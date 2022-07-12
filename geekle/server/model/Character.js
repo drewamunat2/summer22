@@ -49,6 +49,7 @@ const CharacterSchema = new mongoose.Schema({
   createdAt: {type: Date, immutable: true, default: () => Date.now()},
   updatedAt: {type: Date, default: () => Date.now()},
   //author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  num: {type: Number, index: true, unique: true, required: true}
 });
 
 CharacterSchema.pre("save", function(next) {
