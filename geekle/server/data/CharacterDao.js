@@ -1,21 +1,28 @@
 const Character = require("../model/Character");
 const ApiError = require("../model/ApiError");
+const mongoose = require("mongoose");
 
 class CharacterDao {
   constructor() {
     this.characters = [];
   }
 
-  // Pre: title and text are not undefined, and title is not empty
+  // Pre: title and text are not undefined, and title is not empty, and author is a valid author username
   async create({ 
     name, selectName,
     shop, title, image,
     gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-    num
+    num, author
   }) {
     console.log("create method")
     if (name === undefined || name === "") {
       throw new ApiError(400, "Every note must have a none-empty name!");
+    }
+    if(this.findByName(name).name && this.findByName(name).name === name){
+      throw new ApiError(400, "Every note must have a unique name!");
+    }
+    if(this.findByNum(num).num && this.findByNum(num).num === num){
+      throw new ApiError(400, "Every note must have a unique num!");
     }
     if (selectName === undefined || selectName === "") {
       throw new ApiError(400, "Every note must have a none-empty selectName!");
@@ -68,18 +75,21 @@ class CharacterDao {
     if (num === undefined || num === "") {
       throw new ApiError(400, "Every note must have a none-empty num!");
     }
+    if (!author || !mongoose.isValidObjectId(author)) {
+      throw new ApiError(400, "Every note must have an author!");
+    }
     const char = await Character.create({ 
       name, selectName,
       shop, title, image,
       gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-      num
+      num, author
     });
-    console.log("created character: " + char);
-    return char;
+    console.log("created character: " + char, char.author.toString());
+    return {...char, author: char.author.toString()};
   }
 
-  // Pre: id is a valid char ID
-  async update(id, { 
+  // Pre: id is a valid char ID and author is a valid author username
+  async update(author, id, { 
     name, selectName,
     shop, title, image,
     gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
@@ -91,7 +101,7 @@ class CharacterDao {
       { name, selectName,
         shop, title, image,
         gender, species, appearsIn, bothAppearsIn, genre, allGenres, platform, allPlatforms, owner, trademarkOwner, network, universe, role, genRole, year, decade,
-        num
+        num, author
       },
       { new: true, runValidators: true }
     );  
@@ -99,7 +109,7 @@ class CharacterDao {
     if (char === null) {
       throw new ApiError(404, "There is no note with the given ID!");
     }
-    return char;
+    return {...char, author: char.author.toString()};
   }
 
   // Pre: id is a valid char ID
@@ -129,6 +139,13 @@ class CharacterDao {
     return solution;
   }
 
+  async findByName(name) {
+    console.log("findByName method. name: " + name);
+    const character = await Character.find().or([{ name: name }]);
+    console.log("character: " + character);
+    return character;
+  }
+
   // returns an empty array if there is no note in the database
   // or no note matches the search query
   async readAll(query = "") {
@@ -139,8 +156,24 @@ class CharacterDao {
       return characters;
     } 
     const characters = await Character.find({});
-    console.log("read no characters")
+    console.log("read all characters")
     return characters;
+  }
+
+  async readAllNames() {
+    console.log("read all names method"); 
+    const characters = await Character.find({}); 
+    let names = characters.map(function(a) {return a.name;});
+    console.log(names);
+    return names;
+  }
+
+  async readAllSelectNames() {
+    console.log("read all select names method"); 
+    const characters = await Character.find({}); 
+    let names = characters.map(function(a) {return a.selectName;});
+    console.log(names);
+    return names;
   }
 }
 

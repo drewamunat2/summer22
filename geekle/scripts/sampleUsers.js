@@ -3,6 +3,7 @@ const db = require("../server/data/db");
 const UserDao = require("../server/data/UserDao");
 
 async function createSampleUsers(username, role) {
+  console.log(username, role)
   try {
     await db.connect();
 
